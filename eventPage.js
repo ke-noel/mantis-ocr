@@ -57,7 +57,7 @@ function processText(sourceImageUrl) {
     }
 
     alert("status code: " + xhr.status);
-    alert(jsonresponse);
+    alert(response);
 
     // check that there is text before printing anything
  };
