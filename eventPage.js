@@ -79,7 +79,7 @@ function describeImage(sourceImageUrl) {
     } else if (confidence < 0.80) {
     	alert('Unable to process image.');
     } else {
-    	alert("Processed text: " + 
+    	alert("Image description: " + 
     		JSON.stringify(caption.text) + 
     		"\nConfidence is " + Math.round(confidence*100) + "%.");
     }
