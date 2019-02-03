@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Mantis OCR",
-	"version": "0.1",
+	"version": "0.2",
 	"description": "This extension reads text from images for people who are visually impaired.",
 
 	"background": {
@@ -11,5 +11,9 @@
 
 	"permissions": [
 		"contextMenus"
-	]
+	],
+
+	"icons": {
+		"32": "logo-icon.png"
+	}
 }
