@@ -40,14 +40,27 @@ function processText(sourceImageUrl) {
 
     xhr.send('{"url": ' + '"' + sourceImageUrl + '"}');
 
-    var jsonresponse = JSON.stringify(xhr.responseText);
+    var json = JSON.stringify(xhr.responseText);
+    var lines = json.regions[0].lines;
+    var response;
+
+    lines.forEach(function (line) {
+    	line.words.forEach(function (word) {
+    		response += JSON.stringify(word.text);
+    	})
+    });
+
+    if (xhr.status != 200) {
+    	alert('Error! Please try again.');
+    } else {
+    	alert('Processed text: " + response');
+    }
 
     alert("status code: " + xhr.status);
     alert(jsonresponse);
 
     // check that there is text before printing anything
-    // TODO: iterate through bounding boxes and words and concatenate text within
-};
+ };
 
 function describeImage(sourceImageUrl) {
 	var uriBase =
