@@ -24,13 +24,7 @@ function processText(sourceImageUrl) {
 	var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
 
-    // Request parameters
-    var params = {
-    	"language": "unk",
-    	"detectOrientation": "true",
-    };
-
-    var url = uriBase + "?" + "lanuage=unk&detectOrientation=true";
+    var url = uriBase + "?" + "lanuage=en&detectOrientation=true";
 
     var xhr = new XMLHttpRequest();
 
@@ -40,7 +34,7 @@ function processText(sourceImageUrl) {
 
     xhr.send('{"url": ' + '"' + sourceImageUrl + '"}');
 
-    var json = JSON.stringify(xhr.responseText);
+    var json = JSON.parse(xhr.responseText);
     var lines = json.regions[0].lines;
     var response;
 
@@ -53,11 +47,8 @@ function processText(sourceImageUrl) {
     if (xhr.status != 200) {
     	alert('Error! Please try again.');
     } else {
-    	alert('Processed text: " + response');
+    	alert('Processed text: ' + response);
     }
-
-    alert("status code: " + xhr.status);
-    alert(response);
 
     // check that there is text before printing anything
  };
@@ -65,13 +56,6 @@ function processText(sourceImageUrl) {
 function describeImage(sourceImageUrl) {
 	var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
-
-    // Request parameters
-    var params = {
-    	"visualFeatures": "Description",
-    	"details": "",
-    	"language": "en",
-    };
 
     var url = uriBase + "?" + "visualFeatures=Description&details=&lanuage=en";
 
