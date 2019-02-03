@@ -16,7 +16,6 @@ chrome.contextMenus.onClicked.addListener(function(request){
 	} else if  (request.menuItemId == "getImageText") {
 		processText(request.srcUrl);
 	} else if (request.menuItemId == "getImageContent") {
-		var imgSrc = request.srcUrl;
 		describeImage(request.srcUrl);
 	}
 })
@@ -75,8 +74,6 @@ function describeImage(sourceImageUrl) {
     var caption = json.description.captions[0];
     var confidence = JSON.stringify(caption.confidence);
 
-    alert(xhr.responseText);
-
     if (xhr.status != 200) { 
     	alert('Error! Please try again.');
     } else if (confidence < 0.80) {
@@ -86,4 +83,4 @@ function describeImage(sourceImageUrl) {
     		JSON.stringify(caption.text) + 
     		"\nConfidence is " + Math.round(confidence*100) + "%.");
     }
-};
+}
